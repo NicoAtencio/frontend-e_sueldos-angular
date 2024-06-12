@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    container: {
+      center: true,
+    },
+    fontFamily: {
+      // 'sans': ['ui-sans-serif', 'system-ui']
+    }
   },
   plugins: [],
 }

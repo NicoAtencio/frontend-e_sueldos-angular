@@ -1,0 +1,24 @@
+<div class="basis-0 justify-end content-center h-full bg-[url('https://i.postimg.cc/QC7fbQvk/fondo.jpg')] bg-cover">
+  <div class="basis-0 justify-center content-center">
+    <form *ngIf="!cargando" [formGroup] = "formularioLogin" class="example-form mx-auto bg-slate-400 p-3 rounded-lg basis-0" (ngSubmit)="ingresar()">
+      <h2 class="text-center">Iniciar Sesion</h2>
+      <mat-form-field class="example-full-width">
+        <mat-label>{{ tieneErrores('email', 'required') ? 'El mail es obligatorio' : tieneErrores('email', 'email') ? 'Debe ingresar un mail valido' : 'Ingrese mail'}}</mat-label>
+        <input matInput placeholder="ejemplo@gmail.com" formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+      <div>
+        <button type="submit" class="bg-slate-200 p-2 rounded-lg hover:bg-slate-600 hover:text-white">Iniciar sesion</button>
+      </div>
+      <div class="mt-2">
+        <a routerLink="/registro" class="hover:text-white">¿No posee una cuenta? Crear cuenta</a>
+      </div>
+    </form>
+    <div *ngIf="cargando" class="flex justify-center content-center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</div>
