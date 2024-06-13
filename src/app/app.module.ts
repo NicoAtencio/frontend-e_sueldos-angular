@@ -9,20 +9,24 @@ import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 import { CreacionUsuarioComponent } from './creacion-usuario/creacion-usuario.component';
 import { MaterialModule } from './modules/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BienvenidaComponent } from './bienvenida/bienvenida.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistroUsuarioComponent,
     LoginUsuarioComponent,
-    CreacionUsuarioComponent
+    CreacionUsuarioComponent,
+    BienvenidaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

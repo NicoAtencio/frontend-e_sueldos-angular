@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login-usuario',
@@ -11,7 +12,7 @@ export class LoginUsuarioComponent {
   formularioLogin: FormGroup;
   cargando: boolean = false;
 
-  constructor (private form: FormBuilder) {
+  constructor (private form: FormBuilder, private _http: AuthService) {
     this.formularioLogin = this.form.group({
       email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required]

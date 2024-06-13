@@ -11,7 +11,13 @@
           <input matInput placeholder="ejemplo@gmail.com" formControlName="email">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <mat-label>Contraseña</mat-label>
+          <mat-label>
+            {{tieneErrores('password', 'minLength') 
+              ? 'La contraseña debe tener una letra y un numero' 
+              : tieneErrores('password', 'pattern') 
+              ? 'Debe tener al menos una letra y un numero' 
+              : 'Contraseña'}}
+          </mat-label>
           <input matInput type="password" formControlName="password">
         </mat-form-field>
         <div>
