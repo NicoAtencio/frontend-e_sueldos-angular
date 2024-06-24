@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Ver datos</button>
+        <button mat-menu-item>Modificar datos</button>
+        <button mat-menu-item>Eliminar cuenta</button>
+      </mat-menu>
+    <span>E-Sueldos</span>
+</mat-toolbar>

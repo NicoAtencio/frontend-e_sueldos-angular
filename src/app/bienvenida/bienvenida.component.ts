@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BienvenidaComponent implements OnInit{
   nombre?: string
+  nuevo?: boolean
   constructor(private _http: AuthService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class BienvenidaComponent implements OnInit{
     // }
     this.route.queryParams.subscribe(params => {
       this.nombre = params['name'] || '';
+      this.nuevo = params['login'] ? false : true;
     })
   }
 

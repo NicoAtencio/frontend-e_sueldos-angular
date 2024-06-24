@@ -1,1 +1,2 @@
-<h1>Pudiste registrar tu usuario con exito {{nombre ? nombre : ''}}</h1>
+<h1 *ngIf="nuevo">Pudiste registrar tu usuario con exito {{nombre}}</h1>
+<h1 *ngIf="!nuevo">Bienvenido nuevamente {{nombre}}</h1>

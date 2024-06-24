@@ -13,6 +13,7 @@ export class RegistroUsuarioComponent {
   cargando: boolean = false;
   formularioRegistro: FormGroup;
   usuario?: IUsuarioCompleto;
+  mailYaTieneUsuario?: string | undefined;
 
   constructor(private form: FormBuilder,
     private _http: AuthService,
@@ -51,10 +52,19 @@ export class RegistroUsuarioComponent {
           error: (error: any) => {
             console.log('Fallo la peticion', error);
             this.cargando = false;
+            if (error.error.message === 'Email already taken') {
+              this.mailYaTieneUsuario = 'Ya existe un usuario con ese mail';
+            } else {
+              this.mailYaTieneUsuario = 'Hubo un error al registrar el usuario, por favor intentelo nuevamente';
+            }
           }
         })
     } else {
       this.cargando = false;
     }
+  }
+
+  eliminarAdvertenciaMail(): void {
+    this.mailYaTieneUsuario = undefined;
   }
 }

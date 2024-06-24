@@ -8,7 +8,7 @@
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Ingrese mail</mat-label>
-          <input matInput placeholder="ejemplo@gmail.com" formControlName="email">
+          <input matInput placeholder="ejemplo@gmail.com" formControlName="email" (focus)="eliminarAdvertenciaMail()">
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>
@@ -20,6 +20,9 @@
           </mat-label>
           <input matInput type="password" formControlName="password">
         </mat-form-field>
+        <div *ngIf="mailYaTieneUsuario" class="error-message text-red-500">
+          {{ mailYaTieneUsuario }}
+        </div>
         <div>
           <button type="submit" class="bg-slate-200 p-2 rounded-lg hover:bg-slate-600 hover:text-white">Crear cuenta</button>
         </div>

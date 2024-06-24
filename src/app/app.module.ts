@@ -11,6 +11,7 @@ import { MaterialModule } from './modules/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BienvenidaComponent } from './bienvenida/bienvenida.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BienvenidaComponent } from './bienvenida/bienvenida.component';
     RegistroUsuarioComponent,
     LoginUsuarioComponent,
     CreacionUsuarioComponent,
-    BienvenidaComponent
+    BienvenidaComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
