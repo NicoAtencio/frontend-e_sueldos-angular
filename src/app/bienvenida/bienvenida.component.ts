@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { jwtDecode } from 'jwt-decode';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { IDatosUsuarios } from '../models/datos-usuarios.model';
 
 @Component({
   selector: 'app-bienvenida',
@@ -11,18 +12,34 @@ import { ActivatedRoute } from '@angular/router';
 export class BienvenidaComponent implements OnInit{
   nombre?: string
   nuevo?: boolean
-  constructor(private _http: AuthService, private route: ActivatedRoute) {}
+  cargar: boolean = false
+  constructor(
+    private _http: AuthService,
+    private route: ActivatedRoute, 
+    private router: Router,
+    private _usuarioHttp: UserService
+  ) {}
 
   ngOnInit(): void {
-    //Esto trae un objeto donde lo que importa es el sub ya que es el id del usuario.
-    // const token =this._http.getToken();
-    // if (token) {
-    //   console.log(jwtDecode(token));
-    // }
-    this.route.queryParams.subscribe(params => {
-      this.nombre = params['name'] || '';
-      this.nuevo = params['login'] ? false : true;
-    })
+    this.cargar = true;
+    if (this._http.getToken()) {
+      this._usuarioHttp.verDatos().subscribe({
+        next : (data:IDatosUsuarios) => {
+          this.nombre = data.name;
+          this._usuarioHttp.setNombre(this.nombre);
+          this._usuarioHttp.setEmail(data.email);
+          this._usuarioHttp.setBarraNavegacion(true);
+          this.cargar = false
+        },
+        error: (error:any) => {
+          this.cargar = false
+          this._usuarioHttp.limpiarToken();
+          this._usuarioHttp.setBarraNavegacion(false);
+          this.router.navigate(['/login']);
+        }
+      })
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
-
 }

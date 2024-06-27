@@ -1,2 +1,8 @@
-<h1 *ngIf="nuevo">Pudiste registrar tu usuario con exito {{nombre}}</h1>
-<h1 *ngIf="!nuevo">Bienvenido nuevamente {{nombre}}</h1>
+<div *ngIf="!cargar">
+    <h1>Bienvenido a la app de e sueldos {{nombre}}. Por favor seleccionar la opcion que deseas realizar en la barra de
+        navegacion
+    </h1>
+</div>
+<div *ngIf="cargar" class="flex justify-center content-center">
+    <mat-spinner></mat-spinner>
+</div>

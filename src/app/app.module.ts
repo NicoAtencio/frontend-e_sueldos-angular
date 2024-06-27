@@ -12,6 +12,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BienvenidaComponent } from './bienvenida/bienvenida.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DatosUsuarioComponent } from './datos-usuario/datos-usuario.component';
+import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
+import { EliminarUsuarioDialogComponent } from './eliminar-usuario-dialog/eliminar-usuario-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginUsuarioComponent,
     CreacionUsuarioComponent,
     BienvenidaComponent,
-    NavbarComponent
+    NavbarComponent,
+    DatosUsuarioComponent,
+    EditarUsuarioComponent,
+    EliminarUsuarioComponent,
+    EliminarUsuarioDialogComponent
   ],
   imports: [
     BrowserModule,

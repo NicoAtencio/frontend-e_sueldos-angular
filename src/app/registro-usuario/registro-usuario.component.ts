@@ -17,7 +17,8 @@ export class RegistroUsuarioComponent {
 
   constructor(private form: FormBuilder,
     private _http: AuthService,
-    private router: Router) {
+    private router: Router
+  ) {
     this.formularioRegistro = this.form.group({
       name: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
@@ -44,13 +45,11 @@ export class RegistroUsuarioComponent {
         this.formularioRegistro.value.password).subscribe({
           next: (data: any) => {
             this.usuario = data;
-            console.log(this.usuario)
             this.cargando = false;
             this._http.setToken(data.tokens.access.token);
-            this.router.navigate([`/bienvenida`], { queryParams: { name: this.formularioRegistro.value.name } });
+            this.router.navigate([`/`], { queryParams: { name: this.formularioRegistro.value.name } });
           },
           error: (error: any) => {
-            console.log('Fallo la peticion', error);
             this.cargando = false;
             if (error.error.message === 'Email already taken') {
               this.mailYaTieneUsuario = 'Ya existe un usuario con ese mail';

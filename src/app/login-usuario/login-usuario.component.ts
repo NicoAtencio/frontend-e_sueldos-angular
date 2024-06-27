@@ -24,18 +24,15 @@ export class LoginUsuarioComponent {
   }
   ingresar(): void {
     if (this.formularioLogin.valid) {
-      // Simula que envia la informacion a la API y espera una respuesta
       this.cargando = true;
       this._http.login(this.formularioLogin.value.email,this.formularioLogin.value.password).subscribe({
         next: (data: any) => {
           this.usuario = data;
-          console.log(this.usuario);
           this.cargando = false;
           this._http.setToken(data.tokens.access.token);
-          this.router.navigate([`/bienvenida`], { queryParams: { name: data.user.name , login: true} })
+          this.router.navigate([`/`], { queryParams: { name: data.user.name , login: true} })
         },
         error: (error: any) => {
-          console.log(error);
           this.cargando = false;
           if (error.error.message = 'Incorrect email or password') {
             this.errorAlIngresar = 'Mail o contraseña no validos';

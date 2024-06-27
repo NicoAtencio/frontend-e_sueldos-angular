@@ -1,0 +1,22 @@
+<div class="basis-0 justify-center content-center">
+  <form [formGroup]="formularioEdicion" (ngSubmit)="editar()" class="example-form mx-auto bg-slate-50 p-3 rounded-lg basis-0 flex-col">
+    <h2>Puede moficar el nombre, la contraseña o ambos</h2>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="nombre" formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password">
+    </mat-form-field>
+    <div class="flex content-center justify-center">
+      <button *ngIf="!cargando" type="submit" class="bg-slate-200 p-2 rounded-lg hover:bg-slate-600 hover:text-white">Modificar</button>
+      <div *ngIf="cargando" class="flex justify-center content-center">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </form>
+  <p *ngIf="modificado" class="text-center text-green-900">Se edito correctamente</p>
+  <p *ngIf="mostrarError" class="text-center text-red-700">Hubo un error al editar</p>
+  <p *ngIf="errorDeContrasenia" class="text-center text-red-700">La contraseña debe tener minimo 8 caracteres y al menos una letra y un numero</p>
+</div>
